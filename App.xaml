@@ -1,0 +1,24 @@
+﻿<Application x:Class="PavilionsApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:PavilionsApp"
+             StartupUri="LoginWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Brush x:Key="CustomBlack">#2E282A</Brush>
+            <Brush x:Key="CustomLightBlue">#17BEBB</Brush>
+            <Brush x:Key="CustomRed">#EF3E36</Brush>
+
+            <Color x:Key="CustomBlackColor">#2E282A</Color>
+            <Color x:Key="CustomLightBlueColor">#17BEBB</Color>
+            <Color x:Key="CustomRedColor">#EF3E36</Color>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
