@@ -6,35 +6,36 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:PavilionsApp"
         mc:Ignorable="d"
-        Title="Вход" Height="800" Width="1400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\shopicon.png">
-    <Window.Background>
-        <ImageBrush ImageSource="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\shoppingcenter1.png" Stretch="UniformToFill"/>
-    </Window.Background>
-    
+        Title="Вход" Height="800" Width="1400" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\kingit.png">
     <Grid>
         <Rectangle
-            Fill="{StaticResource CustomBlack}"
+            Fill="	#f0f0f0"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
             Height="500"
             Width="1000"
             RadiusX="12"
             RadiusY="12"
-            Panel.ZIndex="1"/>
-        <Image Source="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\shoppng.png"
+            Panel.ZIndex="1">
+            <Rectangle.Effect>
+                <DropShadowEffect Color="{StaticResource CustomBlackColor}"/>
+            </Rectangle.Effect>
+        </Rectangle>
+            <Image Source="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\shoppng.png"
                Panel.ZIndex="2"
                Height="300"
                VerticalAlignment="Center"
                HorizontalAlignment="Left"
                Margin="220,0,0,0"/>
-        <TextBlock Text="LOGIN"
-               Foreground="{StaticResource CustomLightBlue}"
+        <TextBlock Text="Логин"
+               Foreground="{StaticResource CustomBlack}"
                FontSize="50"
                VerticalAlignment="Center"
                HorizontalAlignment="Left"
                Panel.ZIndex="2" 
-               Margin="840,-340,0,0"
-               FontFamily="Bauhaus 93"/>
+               Margin="830,-340,0,0"
+               FontFamily="Arial"
+               FontWeight="Bold"/>
         <TextBox x:Name="LoginBox"
                  KeyDown="LoginBox_KeyDown"
                  VerticalAlignment="Center"
@@ -44,11 +45,12 @@
                  Width="300"
                  Height="60"
                  FontSize="20"
-                 Foreground="{StaticResource CustomRed}"
+                 Foreground="{StaticResource CustomLightPurple}"
                  materialDesign:HintAssist.Hint="Логин(Эл.Почта)"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                 materialDesign:HintAssist.Foreground="{StaticResource CustomRed}"
-                 materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomLightBlue}" />
+                 materialDesign:HintAssist.Foreground="{StaticResource CustomLightPurple}"
+                 materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomPink}" 
+                 PreviewKeyDown="NoSpace"/>
         <PasswordBox x:Name="PasswordBox"
                      VerticalAlignment="Center"
                      HorizontalAlignment="Left"
@@ -57,26 +59,26 @@
                      Width="300"
                      Height="60"
                      FontSize="20"
-                     Foreground="{StaticResource CustomRed}"
+                     Foreground="{StaticResource CustomLightPurple}"
                      materialDesign:HintAssist.Hint="Пароль"
                      Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
-                     materialDesign:HintAssist.Foreground="{StaticResource CustomRed}"
-                     materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomLightBlue}"
+                     materialDesign:HintAssist.Foreground="{StaticResource CustomLightPurple}"
+                     materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomPink}"
                      PasswordChar="*"
-                     
+                     PreviewKeyDown="NoSpace"
             />
         <Button x:Name="AfterLoginButton"
                 Content="Войти"
                 FontSize="28"
-                Foreground="{StaticResource CustomRed}"
+                Foreground="{StaticResource CustomBlack}"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Left"
                 Panel.ZIndex="2"
                 Margin="810,220,0,0"
                 Width="200"
                 Height="60" 
-                Background="{StaticResource CustomLightBlue}"
-                BorderBrush="{StaticResource CustomLightBlue}"
+                Background="{StaticResource CustomPink}"
+                BorderBrush="{StaticResource CustomPink}"
                 Click="AfterLoginButton_Click"
             />
 

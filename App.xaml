@@ -12,13 +12,13 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <Brush x:Key="CustomBlack">#2E282A</Brush>
-            <Brush x:Key="CustomLightBlue">#17BEBB</Brush>
-            <Brush x:Key="CustomRed">#EF3E36</Brush>
+            <Brush x:Key="CustomBlack">#37474F</Brush>
+            <Brush x:Key="CustomLightPurple">#9C7890</Brush>
+            <Brush x:Key="CustomPink">#FF9C9C</Brush>
 
-            <Color x:Key="CustomBlackColor">#2E282A</Color>
-            <Color x:Key="CustomLightBlueColor">#17BEBB</Color>
-            <Color x:Key="CustomRedColor">#EF3E36</Color>
+            <Color x:Key="CustomBlackColor">#37474F</Color>
+            <Color x:Key="CustomLightPurpleColor">#9C7890</Color>
+            <Color x:Key="CustomPinkColor">#FF9C9C</Color>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

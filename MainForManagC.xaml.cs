@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
-using System.Data.SqlClient; 
+using System.Data.SqlClient;
+using PavilionsApp.Model;
 
 namespace PavilionsApp
 {
@@ -22,22 +23,23 @@ namespace PavilionsApp
         public MainForManagC()
         {
             InitializeComponent();
+            var db = new PAVILIONSEntities();
+            AllShopCenters.ItemsSource = db.shoppingCenters
+                .Select(s => new 
+                {
+                    name = s.shoppingCenterName,
+                    statusName = s.shoppingCentersStatuses.shoppingCenterStatusName,
+                    numofpav = s.numberOfPavilions,
+                    city = s.city,
+                    cost = s.cost,
+                    numoffloors = s.numberOfFloors,
+                    coeffaddcost = s.coefficientOfAddedCost
+                }).ToList();
         }
 
-        private void ShowAllShopingCenters()
-        {
-            SqlConnection showAll = new SqlConnection(@"Data Source=LAPTOP-BFCVFHEM\SQLEXPRESS;Initial Catalog=PAVILIONS;Integrated Security=True");
-            showAll.Open();
-            SqlCommand fillData = new SqlCommand("SELECT dbo.shoppingCenters.shoppingCenterName, dbo.shoppingCentersStatuses.shoppingCenterStatusName, dbo.shoppingCenters.numberOfPavilions, dbo.shoppingCenters.city, dbo.shoppingCenters.cost, dbo.shoppingCenters.numberOfFloors, dbo.shoppingCenters.coefficientOfAddedCost FROM dbo.shoppingCenters INNER JOIN dbo.shoppingCentersStatuses ON dbo.shoppingCenters.shoppingCenterStatusID = dbo.shoppingCentersStatuses.shoppingCenterStatusID", showAll);
-            fillData.ExecuteNonQuery();
-            DataTable allShopCenters = new DataTable();
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(fillData);
-            sqlDataAdapter.Fill(allShopCenters);
-            AllShopCenters.ItemsSource = allShopCenters.DefaultView;
-            showAll.Close();
-        }
+      
 
-        private void BACK_Click(object sender, RoutedEventArgs e)
+        private void Back_Click(object sender, RoutedEventArgs e)
         {
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.Show();
