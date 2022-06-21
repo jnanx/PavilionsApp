@@ -1,0 +1,76 @@
+﻿<Window x:Class="PavilionsApp.Captcha"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:PavilionsApp"
+        mc:Ignorable="d" AllowsTransparency="True"
+        Title="Капча" Background="Transparent" Height="200" Width="300" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Border CornerRadius="12" Background="White">
+        <Grid>
+
+        <Button x:Name="Gen" Click="Gen_Click" 
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="210,0,0,90"
+                Height="30"
+                Width="30"
+                Background="{StaticResource CustomLightPurple}"
+                BorderBrush="{StaticResource CustomLightPurple}"
+                Foreground="{StaticResource CustomBlack}"/>
+
+        <Rectangle
+                Height="50" 
+                 Width="160"
+                 Margin="0,0,0,90" 
+                 VerticalAlignment="Center" 
+                 HorizontalAlignment="Center"
+                RadiusX="12"
+            RadiusY="12"
+            Fill="Transparent"
+            StrokeThickness="5"
+            Stroke="White"
+            Panel.ZIndex="2"/>
+        <TextBlock x:Name="CaptchaBox"
+                Height="40" 
+                 Width="150"
+                 Margin="0,0,0,90" 
+                 TextWrapping="Wrap" 
+                 VerticalAlignment="Center" 
+                 HorizontalAlignment="Center"
+                 Background="#f0f0f0"
+                 Foreground="{StaticResource CustomLightPurple}"
+                 FontSize="30"
+                 FontStyle="Italic"
+                 FontFamily="Times New Roman Italic" 
+                   Panel.ZIndex="1"
+                 Text=""/>
+
+        <TextBox x:Name="CaptchaWriteBox"
+                Height="40" 
+                 Width="150"
+                 Margin="0,0,0,0" 
+                 TextWrapping="Wrap" 
+                 VerticalAlignment="Center" 
+                 HorizontalAlignment="Center"
+                 Foreground="{StaticResource CustomLightPurple}"
+                 materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomPink}" 
+                 materialDesign:HintAssist.Foreground="{StaticResource CustomLightPurple}"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 materialDesign:HintAssist.Hint="Введите капчу"
+                 FontSize="14"/>
+
+        <Button x:Name="Ok" Click="Ok_Click" 
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="0,80,0,0"
+                Content="Ок"
+                Height="30"
+                Width="100"
+                Background="{StaticResource CustomPink}"
+                BorderBrush="{StaticResource CustomPink}"
+                Foreground="{StaticResource CustomBlack}"/>
+    </Grid>
+    </Border>
+</Window>

@@ -73,31 +73,51 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ManagerC\AddPavillion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManagerC\AddShopCenter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManagerC\AllPavs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Captcha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainForManagC.xaml">
+    <Page Include="ManagerC\MainForManagC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
+    <Compile Include="ManagerC\AddPavillion.xaml.cs">
+      <DependentUpon>AddPavillion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManagerC\AddShopCenter.xaml.cs">
+      <DependentUpon>AddShopCenter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManagerC\AllPavs.xaml.cs">
+      <DependentUpon>AllPavs.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Captcha.xaml.cs">
+      <DependentUpon>Captcha.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainForManagC.xaml.cs">
+    <Compile Include="ManagerC\MainForManagC.xaml.cs">
       <DependentUpon>MainForManagC.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -186,21 +206,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\shopicon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\shoppingcenter1.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\shoppng.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\shoppingcenter2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\kingit.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\backbutton.png" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>

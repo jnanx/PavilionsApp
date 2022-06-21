@@ -10,19 +10,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PavilionsApp
+namespace PavilionsApp.ManagerC
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для AddPavillion.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddPavillion : Window
     {
-        public MainWindow()
+        public AddPavillion()
         {
             InitializeComponent();
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            AllPavs allPavs = new AllPavs();
+            allPavs.Show();
+            this.Close();
         }
     }
 }

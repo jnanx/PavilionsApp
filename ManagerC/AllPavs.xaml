@@ -1,0 +1,64 @@
+﻿<Window x:Class="PavilionsApp.AllPavs"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:PavilionsApp"
+        mc:Ignorable="d"
+        Title="Павильоны" Height="800" Width="1400" WindowStartupLocation="CenterScreen" Icon="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\kingit.png">
+    <Grid>
+        <Button x:Name="Back" Click="Back_Click" 
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="0,0,0,0"   
+                Height="50"
+                Width="74"
+                Background="Transparent"
+                BorderBrush="Transparent">
+            <Image Stretch="Fill" Source="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\backbutton.png"/>
+
+        </Button>
+
+        <Button x:Name="ToAddPav" Click="ToAddPav_Click" 
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Margin="0,10,10,0"
+                Content="Добавить"
+                Height="30"
+                Width="120"
+                Background="{StaticResource CustomYellow}"
+                BorderBrush="{StaticResource CustomYellow}"
+                Foreground="{StaticResource CustomBlack}" />
+        
+        <DataGrid x:Name="AllPavillions"
+                  Background="	#f0f0f0"
+                  Height="710"
+                  FontFamily="Arial"
+                  FontSize="14"
+                  AutoGenerateColumns="False" 
+                  VerticalAlignment="Bottom"
+                  Foreground="{StaticResource CustomBlack}">
+            <DataGrid.Columns>
+                <DataGridTextColumn  Header="Статус ТЦ" Binding="{Binding Path=statusshopcen}"/>
+                <DataGridTextColumn Header="Название ТЦ" Binding="{Binding Path=nameshopcen}"/>
+                <DataGridTextColumn Header="Этаж" Binding="{Binding Path=floor}"/>
+                <DataGridTextColumn Header="Номер павильона" Binding="{Binding Path=pavnum}"/>
+                <DataGridTextColumn Header="Площадь" Binding="{Binding Path=square}"/>
+                <DataGridTextColumn Header="Статус" Binding="{Binding Path=pavstatus}"/>
+                <DataGridTextColumn Header="Коэф.доб.стоимости" Binding="{Binding Path=coeffofaddcost}"/>
+                <DataGridTextColumn Header="Цена за кв.м." Binding="{Binding Path=costpermeter}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+        <TextBlock HorizontalAlignment="Left" 
+                   VerticalAlignment="Top"
+                   Margin="79,19,0,0" 
+                   FontFamily="Arial"
+                   FontSize="14"
+                   TextWrapping="Wrap"
+                   Foreground="{StaticResource CustomBlack}"
+                   Text="Список всех павильонов"
+                   FontWeight="Bold"/>
+    </Grid>
+</Window>

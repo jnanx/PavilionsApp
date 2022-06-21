@@ -45,5 +45,17 @@ namespace PavilionsApp
             loginWindow.Show();
             this.Close();
         }
+
+        private void ToAdd_Click(object sender, RoutedEventArgs e)
+        {
+            AddShopCenter addShopCenter = new AddShopCenter();
+            addShopCenter.Show();
+            this.Close();
+        }
+
+        private void ToSaveDeleted_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

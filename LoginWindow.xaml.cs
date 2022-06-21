@@ -32,7 +32,9 @@ namespace PavilionsApp
             checkForCaptcha ++;
             if (checkForCaptcha >3)
             {
-                MessageBox.Show("попався");
+                Captcha captcha = new Captcha();
+                captcha.Show();
+                checkForCaptcha = 0;
                 return;
             }
             if (string.IsNullOrWhiteSpace(LoginBox.Text))
