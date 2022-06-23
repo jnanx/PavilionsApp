@@ -44,21 +44,22 @@
 
         <DataGrid x:Name="AllPavillions"
                   Background="	#f0f0f0"
-                  Height="710"
+                  Height="678"
                   FontFamily="Arial"
                   FontSize="14"
                   AutoGenerateColumns="False" 
                   VerticalAlignment="Bottom"
-                  Foreground="{StaticResource CustomBlack}">
+                  Foreground="{StaticResource CustomBlack}"
+                  PreviewKeyDown="AllPavillions_PreviewKeyDown">
             <DataGrid.Columns>
-                <DataGridTextColumn  Header="Статус ТЦ" Binding="{Binding Path=statusshopcen}"/>
-                <DataGridTextColumn Header="Название ТЦ" Binding="{Binding Path=nameshopcen}"/>
-                <DataGridTextColumn Header="Этаж" Binding="{Binding Path=floor}"/>
-                <DataGridTextColumn Header="Номер павильона" Binding="{Binding Path=pavnum}"/>
-                <DataGridTextColumn Header="Площадь" Binding="{Binding Path=square}"/>
-                <DataGridTextColumn Header="Статус" Binding="{Binding Path=pavstatus}"/>
-                <DataGridTextColumn Header="Коэф.доб.стоимости" Binding="{Binding Path=coeffofaddcost}"/>
-                <DataGridTextColumn Header="Цена за кв.м." Binding="{Binding Path=costpermeter}"/>
+                <DataGridTextColumn  Header="Статус ТЦ" Binding="{Binding Path=shoppingCenters.shoppingCentersStatuses.shoppingCenterStatusName}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Название ТЦ" Binding="{Binding Path=shoppingCenters.shoppingCenterName}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Этаж" Binding="{Binding Path=floor}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Номер павильона" Binding="{Binding Path=pavilionNumber}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Площадь" Binding="{Binding Path=square}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Статус" Binding="{Binding Path=pavilionsStatuses.pavilionStatusName}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Коэф.доб.стоимости" Binding="{Binding Path=coefficientOfAddedCost}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Цена за кв.м." Binding="{Binding Path=costForMetere}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
         
@@ -69,7 +70,7 @@
                    FontSize="14"
                    TextWrapping="Wrap"
                    Foreground="{StaticResource CustomBlack}"
-                   Text="Список всех павильонов"
+                   Text="Список павильонов"
                    FontWeight="Bold"/>
     </Grid>
 </Window>

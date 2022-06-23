@@ -28,13 +28,6 @@ namespace PavilionsApp
             AddSCStatus.ItemsSource = db.shoppingCentersStatuses.Where(a => a.shoppingCenterStatusID != 4).ToList();
         }
 
-        private void ToPav_Click(object sender, RoutedEventArgs e)
-        {
-            AllPavs allPavs = new AllPavs();
-            allPavs.Show();
-            this.Close();
-        }
-
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             MainForManagC mainForManagC = new MainForManagC();
@@ -121,5 +114,6 @@ namespace PavilionsApp
         {
             e.Handled = onlyNumbersAndComma.IsMatch(e.Text);
         }
+
     }
 }

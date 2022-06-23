@@ -73,15 +73,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="ManagerC\AddPavillion.xaml">
+    <Page Include="Admin\MainAdmin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ManagerC\AddShopCenter.xaml">
+    <Page Include="ManagerC\Pavilions\AddPavillion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ManagerC\AllPavs.xaml">
+    <Page Include="ManagerC\ShoppingCenters\AddShopCenter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManagerC\Pavilions\AllPavs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -93,17 +97,20 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ManagerC\MainForManagC.xaml">
+    <Page Include="ManagerC\ShoppingCenters\MainForManagC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Compile Include="ManagerC\AddPavillion.xaml.cs">
+    <Compile Include="Admin\MainAdmin.xaml.cs">
+      <DependentUpon>MainAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManagerC\Pavilions\AddPavillion.xaml.cs">
       <DependentUpon>AddPavillion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ManagerC\AddShopCenter.xaml.cs">
+    <Compile Include="ManagerC\ShoppingCenters\AddShopCenter.xaml.cs">
       <DependentUpon>AddShopCenter.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ManagerC\AllPavs.xaml.cs">
+    <Compile Include="ManagerC\Pavilions\AllPavs.xaml.cs">
       <DependentUpon>AllPavs.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
@@ -116,7 +123,7 @@
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ManagerC\MainForManagC.xaml.cs">
+    <Compile Include="ManagerC\ShoppingCenters\MainForManagC.xaml.cs">
       <DependentUpon>MainForManagC.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -204,9 +211,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\shoppingcenter1.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\shoppng.png" />

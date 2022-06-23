@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
 using PavilionsApp.Model;
+using PavilionsApp.Admin;
 
 namespace PavilionsApp
 {
@@ -64,15 +65,24 @@ namespace PavilionsApp
             var employee = db.employees.Where(emp => emp.login == LoginBox.Text && emp.password == PasswordBox.Password).FirstOrDefault();
             if(employee != null)
             {
-                if(employee.roleID != 3)
+                if(employee.roleID != 3 && employee.roleID != 1)
                 {
-                    MessageBox.Show("Вы не являетесь Менеджером типа С. Вход запрещен.");
+                    MessageBox.Show("Вы не являетесь Менеджером типа С или администратором. Вход запрещен.");
                     return;
                 }
-                MainForManagC mainForManagC = new MainForManagC();
-                mainForManagC.Show();
-                this.Close();
-                checkForCaptcha = 0;
+                if (employee.roleID == 3)
+                {
+                    MainForManagC mainForManagC = new MainForManagC();
+                    mainForManagC.Show();
+                    this.Close();
+                    checkForCaptcha = 0;
+                }
+                if(employee.roleID == 1)
+                {
+                    MainAdmin mainAdmin = new MainAdmin();
+                    mainAdmin.Show();
+                    this.Close();
+                }
             }
             else
             {

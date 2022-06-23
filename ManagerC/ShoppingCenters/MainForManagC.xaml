@@ -1,0 +1,149 @@
+﻿<Window x:Class="PavilionsApp.MainForManagC"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:PavilionsApp"
+        mc:Ignorable="d"
+        Title="Главная" Height="800" Width="1400" Icon="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\kingit.png" WindowStartupLocation="CenterScreen">
+    <!--<Window.Background>
+        <ImageBrush ImageSource="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\shoppingcenter2.jpg" Stretch="UniformToFill"/>
+    </Window.Background>-->
+    <Grid>
+        <Button x:Name="Back" Click="Back_Click" 
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="0,0,0,0"   
+                Height="50"
+                Width="74"
+                Background="Transparent"
+                BorderBrush="Transparent">
+
+            <Image Stretch="Fill" Source="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\backbutton.png"/>
+
+        </Button>
+
+        <Button x:Name="ToAdd" Click="ToAdd_Click" 
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Margin="10,10,10,10"
+                Content="Добавить"
+                FontFamily="Arial"
+                FontSize="14"
+                Height="30"
+                Width="120"
+                Background="{StaticResource CustomYellow}"
+                BorderBrush="{StaticResource CustomYellow}"
+                Foreground="{StaticResource CustomBlack}"/>
+
+        <Button x:Name="ToSaveDeleted" Click="ToSaveDeleted_Click" 
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Margin="10,10,140,10"
+                Content="Сохранить"
+                FontFamily="Arial"
+                FontSize="14"
+                Height="30"
+                Width="120"
+                Background="{StaticResource CustomLightBlue}"
+                BorderBrush="{StaticResource CustomLightBlue}"
+                Foreground="{StaticResource CustomYellow}"/>
+
+        <DataGrid x:Name="AllShopCenters"
+                  Background="	#f0f0f0"
+                  Height="678"
+                  FontFamily="Arial"
+                  FontSize="14"
+                  AutoGenerateColumns="False" 
+                  VerticalAlignment="Bottom"
+                  Foreground="{StaticResource CustomBlack}"
+                  PreviewKeyDown="AllShopCenters_KeyDown" 
+                  Margin="0,0,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn  Header="Название ТЦ" Binding="{Binding Path=shoppingCenterName}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Статус ТЦ" Binding="{Binding Path=shoppingCentersStatuses.shoppingCenterStatusName}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Кол-во павильонов" Binding="{Binding Path=numberOfPavilions}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Город" Binding="{Binding Path=city}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Path=cost}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Кол-во этажей" Binding="{Binding Path=numberOfFloors}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Коэф.доб.стоимости" Binding="{Binding Path=coefficientOfAddedCost}" IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBlock HorizontalAlignment="Left" 
+                   VerticalAlignment="Top"
+                   Margin="79,19,0,0" 
+                   FontFamily="Arial"
+                   FontSize="14"
+                   TextWrapping="Wrap"
+                   Foreground="{StaticResource CustomBlack}"
+                   Text="Список всех торговых центров"
+                   FontWeight="Bold"/>
+        
+        <ComboBox x:Name="ChooseStatus"
+                  
+                  HorizontalAlignment="Left" 
+                  Margin="30,43,0,0" 
+                  VerticalAlignment="Top" 
+                  Width="120"
+                  FontFamily="Arial"
+                  FontSize="12"
+                  Height="35"
+                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                  materialDesign:HintAssist.Hint="Статус ТЦ"
+                  Foreground="{StaticResource CustomLightBlue}"
+                  materialDesign:HintAssist.Foreground="{StaticResource CustomLightBlue}"
+                  materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}" SelectionChanged="ChooseStatus_SelectionChanged"
+                  >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding shoppingCenterStatusName}">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Foreground" Value="{StaticResource CustomYellow}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <ComboBox x:Name="ChooseCity"
+                  HorizontalAlignment="Left" 
+                  Margin="170,43,0,0" 
+                  VerticalAlignment="Top" 
+                  Width="120"
+                  FontFamily="Arial"
+                  FontSize="12"
+                  Height="35"
+                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                  materialDesign:HintAssist.Hint="Город"
+                  Foreground="{StaticResource CustomLightBlue}"
+                  materialDesign:HintAssist.Foreground="{StaticResource CustomLightBlue}"
+                  materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}" SelectionChanged="ChooseCity_SelectionChanged"
+                  >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Foreground" Value="{StaticResource CustomYellow}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        
+    </Grid>
+</Window>

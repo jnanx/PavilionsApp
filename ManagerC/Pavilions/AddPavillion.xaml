@@ -53,17 +53,31 @@
             Foreground="{StaticResource CustomLightBlue}"
             materialDesign:HintAssist.Foreground="{StaticResource CustomLightBlue}"
             materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}">
-            <ComboBoxItem Content="Свободен"/>
-            <ComboBoxItem Content="Забронирован"/>
-            <ComboBoxItem Content="Арендован"/>
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding pavilionStatusName}">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Foreground" Value="{StaticResource CustomYellow}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
-        
+
         <TextBox x:Name="AddPavNum"
+        MaxLength="10"
+        materialDesign:TextFieldAssist.CharacterCounterVisibility="Collapsed"
         HorizontalAlignment="Left" 
         VerticalAlignment="Top" 
         Height="45" 
         Width="200"
-        Margin="130,220,0,0" 
+        Margin="130,160,0,0" 
         TextWrapping="Wrap" 
         FontFamily="Arial"
         FontSize="14"
@@ -74,11 +88,14 @@
         materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}" />
 
         <TextBox x:Name="AddFloorNumPav"
+                 MaxLength="3"
+                 materialDesign:TextFieldAssist.CharacterCounterVisibility="Collapsed"
+        PreviewTextInput="AddFloorNumPav_PreviewTextInput"
         HorizontalAlignment="Left" 
         VerticalAlignment="Top" 
         Height="45" 
         Width="200"
-        Margin="130,280,0,0" 
+        Margin="130,220,0,0" 
         TextWrapping="Wrap" 
         FontFamily="Arial"
         FontSize="14"
@@ -90,11 +107,14 @@
 
 
         <TextBox x:Name="AddSquare"
+                 MaxLength="10"
+                 materialDesign:TextFieldAssist.CharacterCounterVisibility="Collapsed"
+        PreviewTextInput="AddSquare_PreviewTextInput"
         HorizontalAlignment="Left" 
         VerticalAlignment="Top" 
         Height="45" 
         Width="200"
-        Margin="130,340,0,0" 
+        Margin="130,280,0,0" 
         TextWrapping="Wrap" 
         FontFamily="Arial"
         FontSize="14"
@@ -104,22 +124,10 @@
         materialDesign:HintAssist.Foreground="{StaticResource CustomLightBlue}"
         materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}" />
 
-        <ComboBox x:Name="AddSCID"
-            HorizontalAlignment="Left" 
-            Margin="130,160,0,0"
-            VerticalAlignment="Top" 
-            FontFamily="Arial"
-            FontSize="14"
-            Height="45"
-            Width="200"
-            Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-            materialDesign:HintAssist.Hint="Торговый центр"
-            Foreground="{StaticResource CustomLightBlue}"
-            materialDesign:HintAssist.Foreground="{StaticResource CustomLightBlue}"
-            materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}">
-        </ComboBox>
-
         <TextBox x:Name="AddCoeffAddCostPav"
+                 MaxLength="10"
+                 materialDesign:TextFieldAssist.CharacterCounterVisibility="Collapsed"
+        PreviewTextInput="AddCoeffAddCostPav_PreviewTextInput"
         HorizontalAlignment="Left" 
         VerticalAlignment="Top" 
         Height="45" 
@@ -135,6 +143,9 @@
         materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}" />
 
         <TextBox x:Name="AddCostPerMeter"
+                 MaxLength="10"
+                 materialDesign:TextFieldAssist.CharacterCounterVisibility="Collapsed"
+        PreviewTextInput="AddCostPerMeter_PreviewTextInput"
         HorizontalAlignment="Left" 
         VerticalAlignment="Top" 
         Height="45" 
