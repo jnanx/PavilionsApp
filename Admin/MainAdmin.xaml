@@ -18,7 +18,7 @@
                 BorderBrush="Transparent">
             <Image Stretch="Fill" Source="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\backbutton.png"/>
         </Button>
-        
+
         <TextBlock HorizontalAlignment="Left" 
                    VerticalAlignment="Top"
                    Margin="79,19,0,0" 

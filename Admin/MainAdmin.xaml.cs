@@ -60,7 +60,9 @@ namespace PavilionsApp.Admin
 
         private void AddEmpBut_Click(object sender, RoutedEventArgs e)
         {
-
+            AddEmployee addEmployee = new AddEmployee();
+            addEmployee.Show();
+            this.Close();
         }
     }
 }
