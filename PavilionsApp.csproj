@@ -216,6 +216,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\backbutton.png" />
+    <Resource Include="Images\updatepic.png" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>

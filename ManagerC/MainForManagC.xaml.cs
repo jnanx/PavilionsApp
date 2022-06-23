@@ -20,21 +20,25 @@ namespace PavilionsApp
     
     public partial class MainForManagC : Window
     {
+        PAVILIONSEntities db;
+
         public MainForManagC()
         {
             InitializeComponent();
-            var db = new PAVILIONSEntities();
-            AllShopCenters.ItemsSource = db.shoppingCenters
-                .Select(s => new 
-                {
-                    name = s.shoppingCenterName,
-                    statusName = s.shoppingCentersStatuses.shoppingCenterStatusName,
-                    numofpav = s.numberOfPavilions,
-                    city = s.city,
-                    cost = s.cost,
-                    numoffloors = s.numberOfFloors,
-                    coeffaddcost = s.coefficientOfAddedCost
-                }).ToList();
+            db = new PAVILIONSEntities();
+            AllShopCenters.ItemsSource = db.shoppingCenters.OrderBy(sc => sc.city).ThenBy(sc => sc.shoppingCentersStatuses.shoppingCenterStatusID).ToList();
+            //.Where(sc => sc.shoppingCenterStatusID != 4)
+            //.Select(s => new
+            //{
+            //    name = s.shoppingCenterName,
+            //    statusName = s.shoppingCentersStatuses.shoppingCenterStatusName,
+            //    numofpav = s.numberOfPavilions,
+            //    city = s.city,
+            //    cost = s.cost,
+            //    numoffloors = s.numberOfFloors,
+            //    coeffaddcost = s.coefficientOfAddedCost
+            //})
+
         }
 
       
@@ -55,7 +59,18 @@ namespace PavilionsApp
 
         private void ToSaveDeleted_Click(object sender, RoutedEventArgs e)
         {
+            db.SaveChanges();
+        }
 
+        private void AllShopCenters_KeyDown(object sender, KeyEventArgs e)
+        {
+            var datagridsc = sender as DataGrid;
+            if (datagridsc.SelectedItem != null)
+            {
+                var sc = datagridsc.SelectedItem as shoppingCenter;
+                //var db = new PAVILIONSEntities();
+                db.shoppingCenters.Find(sc.shoppingCenterID).shoppingCenterStatusID = 4;
+            }
         }
     }
 }

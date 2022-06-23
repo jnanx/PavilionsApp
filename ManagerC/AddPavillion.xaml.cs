@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PavilionsApp.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,8 @@ namespace PavilionsApp.ManagerC
         public AddPavillion()
         {
             InitializeComponent();
+            var db = new PAVILIONSEntities();
+            AddSCID.ItemsSource = db.shoppingCenters.ToList();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -29,6 +32,19 @@ namespace PavilionsApp.ManagerC
             AllPavs allPavs = new AllPavs();
             allPavs.Show();
             this.Close();
+        }
+
+
+        private void AddPavillionBut_Click(object sender, RoutedEventArgs e)
+        {
+            var db = new PAVILIONSEntities();
+            var b = new pavilion
+            {
+
+            };
+            db.pavilions
+                .Add(b);
+            db.SaveChanges();
         }
     }
 }

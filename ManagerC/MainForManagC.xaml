@@ -12,22 +12,22 @@
     </Window.Background>-->
     <Grid>
         <Button x:Name="Back" Click="Back_Click" 
-                HorizontalAlignment="Right"
+                HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Margin="10,10,10,10"
-                Content="Выход"
-                Height="30"
-                Width="120"
-                FontFamily="Arial"
-                FontSize="14"
-                Background="{StaticResource CustomLightBlue}"
-                BorderBrush="{StaticResource CustomLightBlue}"
-                Foreground="{StaticResource CustomYellow}"/>
+                Margin="0,0,0,0"   
+                Height="50"
+                Width="74"
+                Background="Transparent"
+                BorderBrush="Transparent">
+
+            <Image Stretch="Fill" Source="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\backbutton.png"/>
+
+        </Button>
 
         <Button x:Name="ToAdd" Click="ToAdd_Click" 
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
-                Margin="10,10,140,10"
+                Margin="10,10,10,10"
                 Content="Добавить"
                 FontFamily="Arial"
                 FontSize="14"
@@ -40,15 +40,15 @@
         <Button x:Name="ToSaveDeleted" Click="ToSaveDeleted_Click" 
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
-                Margin="10,10,270,10"
+                Margin="10,10,140,10"
                 Content="Сохранить"
                 FontFamily="Arial"
                 FontSize="14"
                 Height="30"
                 Width="120"
-                Background="{StaticResource CustomYellow}"
-                BorderBrush="{StaticResource CustomYellow}"
-                Foreground="{StaticResource CustomBlack}"/>
+                Background="{StaticResource CustomLightBlue}"
+                BorderBrush="{StaticResource CustomLightBlue}"
+                Foreground="{StaticResource CustomYellow}"/>
 
         <DataGrid x:Name="AllShopCenters"
                   Background="	#f0f0f0"
@@ -57,15 +57,16 @@
                   FontSize="14"
                   AutoGenerateColumns="False" 
                   VerticalAlignment="Bottom"
-                  Foreground="{StaticResource CustomBlack}">
+                  Foreground="{StaticResource CustomBlack}"
+                  PreviewKeyDown="AllShopCenters_KeyDown">
             <DataGrid.Columns>
-                <DataGridTextColumn  Header="Название ТЦ" Binding="{Binding Path=name}"/>
-                <DataGridTextColumn Header="Статус ТЦ" Binding="{Binding Path=statusName}"/>
-                <DataGridTextColumn Header="Кол-во павильонов" Binding="{Binding Path=numofpav}"/>
+                <DataGridTextColumn  Header="Название ТЦ" Binding="{Binding Path=shoppingCenterName}"/>
+                <DataGridTextColumn Header="Статус ТЦ" Binding="{Binding Path=shoppingCentersStatuses.shoppingCenterStatusName}"/>
+                <DataGridTextColumn Header="Кол-во павильонов" Binding="{Binding Path=numberOfPavilions}"/>
                 <DataGridTextColumn Header="Город" Binding="{Binding Path=city}"/>
                 <DataGridTextColumn Header="Цена" Binding="{Binding Path=cost}"/>
-                <DataGridTextColumn Header="Кол-во этажей" Binding="{Binding Path=numoffloors}"/>
-                <DataGridTextColumn Header="Коэф.доб.стоимости" Binding="{Binding Path=coeffaddcost}"/>
+                <DataGridTextColumn Header="Кол-во этажей" Binding="{Binding Path=numberOfFloors}"/>
+                <DataGridTextColumn Header="Коэф.доб.стоимости" Binding="{Binding Path=coefficientOfAddedCost}"/>
             </DataGrid.Columns>
         </DataGrid>
 

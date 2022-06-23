@@ -33,7 +33,18 @@
                 Background="{StaticResource CustomYellow}"
                 BorderBrush="{StaticResource CustomYellow}"
                 Foreground="{StaticResource CustomBlack}" />
-        
+
+        <Button x:Name="AddShopCen" Click="AddShopCen_Click" 
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Margin="0,10,140,0"
+                Content="Сохранить"
+                Height="30"
+                Width="120"
+                Background="{StaticResource CustomLightBlue}"
+                BorderBrush="{StaticResource CustomLightBlue}"
+                Foreground="{StaticResource CustomYellow}" />
+
         <TextBlock HorizontalAlignment="Left" 
                    VerticalAlignment="Top"
                    Margin="79,19,0,0" 
@@ -44,13 +55,155 @@
                    Text="Добавить торговый центр"
                    FontWeight="Bold"/>
 
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="134,162,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="134,230,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <ComboBox HorizontalAlignment="Left" Margin="134,322,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="134,398,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="491,162,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="491,230,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="491,398,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="491,330,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="AddShopCenName"
+                 MaxLength="120"
+                 materialDesign:TextFieldAssist.CharacterCounterVisibility="Collapsed"
+                HorizontalAlignment="Left" 
+                 VerticalAlignment="Top" 
+                 Height="45" 
+                 Width="200"
+                 Margin="130,160,0,0" 
+                 TextWrapping="Wrap" 
+                 FontFamily="Arial"
+                 FontSize="14"
+                 Foreground="{StaticResource CustomLightBlue}"
+                 materialDesign:HintAssist.Hint="Название ТЦ"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 materialDesign:HintAssist.Foreground="{StaticResource CustomLightBlue}"
+                 materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}" />
+
+        <ComboBox x:Name="AddSCStatus"
+            HorizontalAlignment="Left" 
+                  Margin="130,220,0,0"
+                  VerticalAlignment="Top" 
+                  FontFamily="Arial"
+                  FontSize="14"
+                  Height="45"
+                  Width="200"
+                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                  materialDesign:HintAssist.Hint="Статус ТЦ"
+                  Foreground="{StaticResource CustomLightBlue}"
+                  materialDesign:HintAssist.Foreground="{StaticResource CustomLightBlue}"
+                  materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}"
+                  >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding shoppingCenterStatusName}">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Foreground" Value="{StaticResource CustomYellow}"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <TextBox x:Name="AddCoeffAddCost"
+                 PreviewTextInput="AddCoeffAddCost_PreviewTextInput"
+                 MaxLength="10"
+                 materialDesign:TextFieldAssist.CharacterCounterVisibility="Collapsed"
+                HorizontalAlignment="Left" 
+                 VerticalAlignment="Top" 
+                 Height="45" 
+                 Width="200"
+                 Margin="130,280,0,0" 
+                 TextWrapping="Wrap" 
+                 FontFamily="Arial"
+                 FontSize="14"
+                 Foreground="{StaticResource CustomLightBlue}"
+                 materialDesign:HintAssist.Hint="Коэфф.доп.стоимости"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 materialDesign:HintAssist.Foreground="{StaticResource CustomLightBlue}"
+                 materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}" />
+
+        <TextBox x:Name="AddCost"
+                 PreviewTextInput="AddCost_PreviewTextInput"
+                 MaxLength="50"
+                 materialDesign:TextFieldAssist.CharacterCounterVisibility="Collapsed"
+                HorizontalAlignment="Left" 
+                 VerticalAlignment="Top" 
+                 Height="45" 
+                 Width="200"
+                 Margin="130,340,0,0" 
+                 TextWrapping="Wrap" 
+                 FontFamily="Arial"
+                 FontSize="14"
+                 Foreground="{StaticResource CustomLightBlue}"
+                 materialDesign:HintAssist.Hint="Затраты на строительство"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 materialDesign:HintAssist.Foreground="{StaticResource CustomLightBlue}"
+                 materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}" />
+
+        <TextBox x:Name="AddCity"
+                 MaxLength="50"
+                 materialDesign:TextFieldAssist.CharacterCounterVisibility="Collapsed"
+                HorizontalAlignment="Left" 
+                 VerticalAlignment="Top" 
+                 Height="45" 
+                 Width="200"
+                 Margin="370,160,0,0" 
+                 TextWrapping="Wrap" 
+                 FontFamily="Arial"
+                 FontSize="14"
+                 Foreground="{StaticResource CustomLightBlue}"
+                 materialDesign:HintAssist.Hint="Город"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 materialDesign:HintAssist.Foreground="{StaticResource CustomLightBlue}"
+                 materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}" />
+
+        <TextBox x:Name="AddFloors"
+                 PreviewTextInput="AddFloors_PreviewTextInput"
+                 MaxLength="3"
+                 materialDesign:TextFieldAssist.CharacterCounterVisibility="Collapsed"
+                HorizontalAlignment="Left" 
+                 VerticalAlignment="Top" 
+                 Height="45" 
+                 Width="200"
+                 Margin="370,220,0,0" 
+                 TextWrapping="Wrap" 
+                 FontFamily="Arial"
+                 FontSize="14"
+                 Foreground="{StaticResource CustomLightBlue}"
+                 materialDesign:HintAssist.Hint="Этажность"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 materialDesign:HintAssist.Foreground="{StaticResource CustomLightBlue}"
+                 materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}" />
+
+        <TextBox x:Name="AddNumOfPavs"
+                 PreviewTextInput="AddNumOfPavs_PreviewTextInput"
+                 MaxLength="10"
+                 materialDesign:TextFieldAssist.CharacterCounterVisibility="Collapsed"
+                HorizontalAlignment="Left" 
+                 VerticalAlignment="Top" 
+                 Height="45" 
+                 Width="200"
+                 Margin="370,280,0,0" 
+                 TextWrapping="Wrap" 
+                 FontFamily="Arial"
+                 FontSize="14"
+                 Foreground="{StaticResource CustomLightBlue}"
+                 materialDesign:HintAssist.Hint="Кол-во павильонов"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 materialDesign:HintAssist.Foreground="{StaticResource CustomLightBlue}"
+                 materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}" />
+
+        <Button x:Name="AddShopCenPic"
+                 HorizontalAlignment="Left" 
+                 VerticalAlignment="Top" 
+                 Height="45" 
+                 Width="200"
+                 Margin="370,340,0,0"  
+                 FontFamily="Arial"
+                Content="Добавить картинку"
+                Background="{StaticResource CustomYellow}"
+                BorderBrush="{StaticResource CustomYellow}"
+                Foreground="{StaticResource CustomBlack}"
+                 FontSize="14"/>
+
     </Grid>
 </Window>

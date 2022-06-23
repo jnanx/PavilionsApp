@@ -10,15 +10,16 @@
     <Border CornerRadius="12" Background="White">
         <Grid>
 
-        <Button x:Name="Gen" Click="Gen_Click" 
+            <Button x:Name="Gen" Click="Gen_Click" 
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Margin="210,0,0,90"
+                Margin="190,0,0,90"
                 Height="30"
-                Width="30"
-                Background="{StaticResource CustomLightPurple}"
-                BorderBrush="{StaticResource CustomLightPurple}"
-                Foreground="{StaticResource CustomBlack}"/>
+                Width="55"
+                Background="Transparent"
+                BorderBrush="Transparent">
+                <Image Source="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\updatepic.png" Stretch="Fill"/>
+            </Button>
 
         <Rectangle
                 Height="50" 
@@ -32,6 +33,7 @@
             StrokeThickness="5"
             Stroke="White"
             Panel.ZIndex="2"/>
+            
         <TextBlock x:Name="CaptchaBox"
                 Height="40" 
                  Width="150"
@@ -40,11 +42,11 @@
                  VerticalAlignment="Center" 
                  HorizontalAlignment="Center"
                  Background="#f0f0f0"
-                 Foreground="{StaticResource CustomLightPurple}"
+                 Foreground="{StaticResource CustomLightBlue}"
                  FontSize="30"
                  FontStyle="Italic"
                  FontFamily="Times New Roman Italic" 
-                   Panel.ZIndex="1"
+                 Panel.ZIndex="1"
                  Text=""/>
 
         <TextBox x:Name="CaptchaWriteBox"
@@ -54,12 +56,13 @@
                  TextWrapping="Wrap" 
                  VerticalAlignment="Center" 
                  HorizontalAlignment="Center"
-                 Foreground="{StaticResource CustomLightPurple}"
-                 materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomPink}" 
-                 materialDesign:HintAssist.Foreground="{StaticResource CustomLightPurple}"
+                 Foreground="{StaticResource CustomLightBlue}"
+                 materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}" 
+                 materialDesign:HintAssist.Foreground="{StaticResource CustomLightBlue}"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  materialDesign:HintAssist.Hint="Введите капчу"
-                 FontSize="14"/>
+                 FontSize="12"
+                 FontFamily="Arial"/>
 
         <Button x:Name="Ok" Click="Ok_Click" 
                 HorizontalAlignment="Center"
@@ -68,8 +71,10 @@
                 Content="Ок"
                 Height="30"
                 Width="100"
-                Background="{StaticResource CustomPink}"
-                BorderBrush="{StaticResource CustomPink}"
+                FontFamily="Arial"
+                FontSize="14"
+                Background="{StaticResource CustomYellow}"
+                BorderBrush="{StaticResource CustomYellow}"
                 Foreground="{StaticResource CustomBlack}"/>
     </Grid>
     </Border>

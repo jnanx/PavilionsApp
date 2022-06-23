@@ -52,5 +52,10 @@ namespace PavilionsApp
             addPavillion.Show();
             this.Close();
         }
+
+        private void SaveDeletedPavs_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

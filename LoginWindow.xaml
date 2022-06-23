@@ -37,6 +37,8 @@
                FontFamily="Arial"
                FontWeight="Bold"/>
         <TextBox x:Name="LoginBox"
+                 MaxLength="120"
+                 materialDesign:TextFieldAssist.CharacterCounterVisibility="Collapsed"
                  Text="Adam@gmai.com"
                  FontFamily="Arial"
                  KeyDown="LoginBox_KeyDown"
@@ -54,6 +56,8 @@
                  materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}" 
                  PreviewKeyDown="NoSpace"/>
         <PasswordBox x:Name="PasswordBox"
+                     MaxLength="50"
+                     materialDesign:TextFieldAssist.CharacterCounterVisibility="Collapsed"
                      Password="7SP9CV"
                      FontFamily="Arial"
                      VerticalAlignment="Center"
