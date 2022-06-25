@@ -65,7 +65,7 @@ namespace PavilionsApp.ManagerC.ShoppingCenters
             var db = new PAVILIONSEntities();
             var sc = db.shoppingCenters.Find(_shoppingCenter.shoppingCenterID);
             sc.shoppingCenterName = EditShopCenName.Text;
-            sc.shoppingCenterStatusID = (EditSCStatus.SelectedItem as shoppingCentersStatus).shoppingCenterStatusID;
+            sc.shoppingCenterStatusID = EditSCStatus.SelectedItem != null? (EditSCStatus.SelectedItem as shoppingCentersStatus).shoppingCenterStatusID : _shoppingCenter.shoppingCenterStatusID;
             sc.coefficientOfAddedCost = Convert.ToDecimal(EditCoeffAddCost.Text);
             sc.cost = Convert.ToDecimal(EditCost.Text);
             sc.city = EditCity.Text;

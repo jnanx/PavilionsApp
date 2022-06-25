@@ -73,7 +73,7 @@ namespace PavilionsApp.ManagerC.Pavilions
             var pav = db.pavilions.Find(_pavilion.pavilionID);
             pav.pavilionNumber = EditPavNum.Text;
             pav.floor = Convert.ToInt32(EditFloorNumPav.Text);
-            pav.pavilionStatusID = (EditPavStatus.SelectedItem as pavilionStatus).pavilionStatusID;
+            pav.pavilionStatusID = EditPavStatus.SelectedItem != null? (EditPavStatus.SelectedItem as pavilionStatus).pavilionStatusID : _pavilion.pavilionStatusID;
             pav.square = Convert.ToDecimal(EditSquare.Text);
             pav.costForMetere = Convert.ToDecimal(EditCostPerMeter.Text);
             pav.coefficientOfAddedCost = Convert.ToDecimal(EditCoeffAddCostPav.Text);

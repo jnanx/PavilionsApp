@@ -95,6 +95,7 @@ namespace PavilionsApp
         {
             var combobox = sender as ComboBox;
             var selectedItem = combobox.SelectedItem as shoppingCentersStatus;
+
             if (selectedItem != null)
             {
                 AllShopCenters.ItemsSource = db.shoppingCenters.Where(sc => sc.shoppingCenterStatusID == selectedItem.shoppingCenterStatusID).ToList();
