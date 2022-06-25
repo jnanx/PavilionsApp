@@ -1,4 +1,5 @@
 ﻿using PavilionsApp.ManagerC;
+using PavilionsApp.ManagerC.Pavilions;
 using PavilionsApp.Model;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,7 @@ namespace PavilionsApp
                 //}).ToList();
         }
 
+
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             MainForManagC mainForManagC = new MainForManagC();
@@ -70,10 +72,16 @@ namespace PavilionsApp
                 {
                     db.pavilions.Find(pav.pavilionID).pavilionStatusID = 4;
                 }
-                if(e.Key == Key.Enter)
+                //if(e.Key == Key.Enter)
+                //{
+                //    AddPavillion addPavillion = new AddPavillion(_shoppingCenterID);
+                //    addPavillion.Show();
+                //    this.Close();
+                //}
+                if(e.Key == Key.Tab)
                 {
-                    AddPavillion addPavillion = new AddPavillion(_shoppingCenterID);
-                    addPavillion.Show();
+                    EditPavilion editPavilion = new EditPavilion(pav);
+                    editPavilion.Show();
                     this.Close();
                 }
             }

@@ -85,6 +85,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ManagerC\Pavilions\EditPavilion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ManagerC\ShoppingCenters\AddShopCenter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -93,11 +97,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Captcha.xaml">
+    <Page Include="Login\Captcha.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LoginWindow.xaml">
+    <Page Include="Login\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManagerC\ShoppingCenters\EditShopCenter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -114,6 +122,9 @@
     <Compile Include="ManagerC\Pavilions\AddPavillion.xaml.cs">
       <DependentUpon>AddPavillion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ManagerC\Pavilions\EditPavilion.xaml.cs">
+      <DependentUpon>EditPavilion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ManagerC\ShoppingCenters\AddShopCenter.xaml.cs">
       <DependentUpon>AddShopCenter.xaml</DependentUpon>
     </Compile>
@@ -124,11 +135,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Captcha.xaml.cs">
+    <Compile Include="Login\Captcha.xaml.cs">
       <DependentUpon>Captcha.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LoginWindow.xaml.cs">
+    <Compile Include="Login\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManagerC\ShoppingCenters\EditShopCenter.xaml.cs">
+      <DependentUpon>EditShopCenter.xaml</DependentUpon>
     </Compile>
     <Compile Include="ManagerC\ShoppingCenters\MainForManagC.xaml.cs">
       <DependentUpon>MainForManagC.xaml</DependentUpon>

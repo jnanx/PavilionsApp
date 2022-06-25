@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Data;
 using System.Data.SqlClient;
 using PavilionsApp.Model;
+using PavilionsApp.ManagerC.ShoppingCenters;
 
 namespace PavilionsApp
 {
@@ -80,14 +81,15 @@ namespace PavilionsApp
                     allPavs.Show();
                     this.Close();
                 }
-
+                if(e.Key == Key.Tab)
+                {
+                    EditShopCenter editShopCenter = new EditShopCenter(sc);
+                    editShopCenter.Show();
+                    this.Close();
+                }
             }
         }
 
-        private void SortComboBox()
-        {
-            
-        }
 
         private void ChooseStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
