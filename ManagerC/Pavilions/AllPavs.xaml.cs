@@ -29,17 +29,20 @@ namespace PavilionsApp
             _shoppingCenterID = shoppingCenterID;
             InitializeComponent();
             AllPavillions.ItemsSource = db.pavilions.Where(p => p.shoppingCenterID == _shoppingCenterID).ToList();
-                //.Select(s => new
-                //{
-                //    statusshopcen = s.shoppingCenters.shoppingCentersStatuses.shoppingCenterStatusName,
-                //    nameshopcen = s.shoppingCenters.shoppingCenterName,
-                //    floor = s.floor,
-                //    pavnum = s.pavilionNumber,
-                //    square = s.square,
-                //    pavstatus = s.pavilionsStatuses.pavilionStatusName,
-                //    coeffofaddcost = s.coefficientOfAddedCost,
-                //    costpermeter = s.costForMetere
-                //}).ToList();
+            ChooseFloor.ItemsSource = db.pavilions.Select(p => p.floor).Distinct().ToList();
+            ChooseSquare.ItemsSource = db.pavilions.Select(p => p.square).Distinct().ToList();
+            ChooseStatus.ItemsSource = db.pavilions.Select(p => p.pavilionsStatuses.pavilionStatusName).Distinct().ToList();
+            //.Select(s => new
+            //{
+            //    statusshopcen = s.shoppingCenters.shoppingCentersStatuses.shoppingCenterStatusName,
+            //    nameshopcen = s.shoppingCenters.shoppingCenterName,
+            //    floor = s.floor,
+            //    pavnum = s.pavilionNumber,
+            //    square = s.square,
+            //    pavstatus = s.pavilionsStatuses.pavilionStatusName,
+            //    coeffofaddcost = s.coefficientOfAddedCost,
+            //    costpermeter = s.costForMetere
+            //}).ToList();
         }
 
 
@@ -72,12 +75,6 @@ namespace PavilionsApp
                 {
                     db.pavilions.Find(pav.pavilionID).pavilionStatusID = 4;
                 }
-                //if(e.Key == Key.Enter)
-                //{
-                //    AddPavillion addPavillion = new AddPavillion(_shoppingCenterID);
-                //    addPavillion.Show();
-                //    this.Close();
-                //}
                 if(e.Key == Key.Tab)
                 {
                     EditPavilion editPavilion = new EditPavilion(pav);
@@ -85,6 +82,37 @@ namespace PavilionsApp
                     this.Close();
                 }
             }
+        }
+
+        private void ChooseFloor_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var comboboxFloor = sender as ComboBox;
+            var selecteditemFloor = comboboxFloor.SelectedItem as int?;
+            var selecteditemSquare = ChooseSquare.SelectedItem as int?;
+            var selecteditemStatus = ChooseStatus.SelectedItem as shoppingCentersStatus;
+            if(selecteditemFloor != null)
+            {
+                AllPavillions.ItemsSource = selecteditemFloor == null ?
+                    db.pavilions.Where(p => p.floor == selecteditemFloor && p.shoppingCenterID == _shoppingCenterID).ToList() :
+                    db.pavilions.Where(p => p.floor == selecteditemFloor && p.shoppingCenterID == _shoppingCenterID && p.square == selecteditemSquare && p.pavilionStatusID == selecteditemStatus.shoppingCenterStatusID).ToList();
+                ;
+            }
+        }
+
+
+        private void ChooseSquare_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ChooseStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ToReset_Click(object sender, RoutedEventArgs e)
+        {
+            AllPavillions.ItemsSource = db.pavilions.Where(p => p.shoppingCenterID == _shoppingCenterID).ToList();
         }
     }
 }

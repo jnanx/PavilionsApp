@@ -144,6 +144,18 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
+        <Button x:Name="ToReset" Click="ToReset_Click" 
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="290,45,0,0"
+                FontFamily="Arial"
+                FontSize="14"
+                Height="30"
+                Width="55"
+                Background="Transparent"
+                BorderBrush="Transparent">
+            <Image Source="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\updatepic.png" Stretch="Fill"/>
+        </Button>
         
     </Grid>
 </Window>

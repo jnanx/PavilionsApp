@@ -94,11 +94,15 @@ namespace PavilionsApp
         private void ChooseStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var combobox = sender as ComboBox;
-            var selectedItem = combobox.SelectedItem as shoppingCentersStatus;
+            var selectedStatus = combobox.SelectedItem as shoppingCentersStatus;
+            var selectedCity = ChooseCity.SelectedItem as string;
 
-            if (selectedItem != null)
+            if (selectedStatus != null)
             {
-                AllShopCenters.ItemsSource = db.shoppingCenters.Where(sc => sc.shoppingCenterStatusID == selectedItem.shoppingCenterStatusID).ToList();
+                AllShopCenters.ItemsSource = selectedCity == null ?
+                    db.shoppingCenters.Where(sc => sc.shoppingCenterStatusID == selectedStatus.shoppingCenterStatusID).ToList() :
+                    db.shoppingCenters.Where(sc => sc.shoppingCenterStatusID == selectedStatus.shoppingCenterStatusID && sc.city == selectedCity).ToList();
+                   ;
             }
         }
 
@@ -106,10 +110,20 @@ namespace PavilionsApp
         {
             var comboboxCity = sender as ComboBox;
             var selecteditemCity = comboboxCity.SelectedItem as string;
+            var selecteditemStatus = ChooseStatus.SelectedItem as shoppingCentersStatus;
+
             if (selecteditemCity != null)
             {
-                AllShopCenters.ItemsSource = db.shoppingCenters.Where(sc => sc.city == selecteditemCity).ToList();
+                AllShopCenters.ItemsSource = selecteditemStatus == null ?
+                    db.shoppingCenters.Where(sc => sc.city == selecteditemCity).ToList() :
+                    db.shoppingCenters.Where(sc => sc.city == selecteditemCity && sc.shoppingCenterStatusID == selecteditemStatus.shoppingCenterStatusID).ToList();
+                    ;
             }
+        }
+
+        private void ToReset_Click(object sender, RoutedEventArgs e)
+        {
+            AllShopCenters.ItemsSource = db.shoppingCenters.ToList();
         }
     }
 }
