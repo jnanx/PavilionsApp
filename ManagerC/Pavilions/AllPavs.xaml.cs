@@ -33,7 +33,7 @@ namespace PavilionsApp
             InitializeComponent();
             AllPavillions.ItemsSource = _pavilions;
             List<int> floors = new List<int>();
-            for (int i = 1; i <= db.shoppingCenters.Find(_shoppingCenterID).numberOfFloors; i++) floors.Add(i);
+            for (int i = -4; i <= db.shoppingCenters.Find(_shoppingCenterID).numberOfFloors; i++) floors.Add(i);
            
             ChooseFloor.ItemsSource = floors;
             ChooseStatus.ItemsSource = db.pavilionsStatuses.ToList();
@@ -80,8 +80,8 @@ namespace PavilionsApp
 
         private void ChooseFloor_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var comboboxFloor = sender as ComboBox;
-            var selecteditemFloor = comboboxFloor.SelectedItem as int?;
+            var combobox = sender as ComboBox;
+            var selecteditemFloor = combobox.SelectedItem as int?;
             var selecteditemStatus = ChooseStatus.SelectedItem as pavilionStatus;
             if(selecteditemFloor != null)
             {
@@ -134,8 +134,8 @@ namespace PavilionsApp
 
         private void ChooseStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var comboboxFloor = sender as ComboBox;
-            var selecteditemStatus = comboboxFloor.SelectedItem as pavilionStatus;
+            var combobox= sender as ComboBox;
+            var selecteditemStatus = combobox.SelectedItem as pavilionStatus;
             var selecteditemFloor = ChooseFloor.SelectedItem as int?;
             if (selecteditemStatus != null)
             {
@@ -193,7 +193,107 @@ namespace PavilionsApp
         private void EndSquare_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-            
+            var endSquare = (sender as TextBox).Text;
+            var selecteditemFloor = ChooseFloor.SelectedItem as int?;
+            var selecteditemStatus = ChooseStatus.SelectedItem as pavilionStatus;
+            if (endSquare != "")
+            {
+                List<pavilion> pavilions = new List<pavilion>();
+                pavilions = _pavilions.Where(p => p.square < Convert.ToDecimal (endSquare)).ToList();
+                if (selecteditemFloor != null && StartSquare.Text != "" && selecteditemStatus != null)
+                {
+                    pavilions = pavilions.Where(p => p.floor == selecteditemFloor &&
+                                                      p.square > Convert.ToDecimal(StartSquare.Text) &&
+                                                      p.pavilionStatusID == selecteditemStatus.pavilionStatusID).ToList();
+                }
+                if (selecteditemFloor != null && StartSquare.Text != "" && selecteditemStatus == null)
+                {
+                    pavilions = pavilions.Where(p => p.floor == selecteditemFloor &&
+                                                      p.square > Convert.ToDecimal(StartSquare.Text)
+                                                      ).ToList();
+                }
+                if (selecteditemFloor != null && StartSquare.Text == "" && selecteditemStatus != null)
+                {
+                    pavilions = pavilions.Where(p => p.floor == selecteditemFloor &&
+                                                      p.pavilionStatusID == selecteditemStatus.pavilionStatusID).ToList();
+                }
+                if (selecteditemFloor == null && StartSquare.Text != "" && selecteditemStatus != null)
+                {
+                    pavilions = pavilions.Where(p =>
+                                                      p.square > Convert.ToDecimal(StartSquare.Text) &&
+                                                      p.pavilionStatusID == selecteditemStatus.pavilionStatusID).ToList();
+                }
+                if (selecteditemFloor != null && StartSquare.Text == "" && selecteditemStatus == null)
+                {
+                    pavilions = pavilions.Where(p => p.floor == selecteditemFloor
+                                                      ).ToList();
+                }
+                if (selecteditemFloor == null && StartSquare.Text == "" && selecteditemStatus != null)
+                {
+                    pavilions = pavilions.Where(p =>
+                                                      p.pavilionStatusID == selecteditemStatus.pavilionStatusID).ToList();
+                }
+                if (selecteditemFloor == null && StartSquare.Text != "" && selecteditemStatus == null)
+                {
+                    pavilions = pavilions.Where(p =>
+                                                      p.square > Convert.ToDecimal(StartSquare.Text)).ToList();
+                }
+
+                AllPavillions.ItemsSource = pavilions;
+            }
+        }
+
+        private void StartSquare_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var startSquare = (sender as TextBox).Text;
+            var selecteditemFloor = ChooseFloor.SelectedItem as int?;
+            var selecteditemStatus = ChooseStatus.SelectedItem as pavilionStatus;
+            if (startSquare != "")
+            {
+                List<pavilion> pavilions = new List<pavilion>();
+                pavilions = _pavilions.Where(p => p.square > Convert.ToDecimal(startSquare)).ToList();
+                if (selecteditemFloor != null && StartSquare.Text != "" && EndSquare.Text != "")
+                {
+                    pavilions = pavilions.Where(p => p.floor == selecteditemFloor &&
+                                                      p.pavilionStatusID == selecteditemStatus.pavilionStatusID &&
+                                                      p.square < Convert.ToDecimal(EndSquare.Text)).ToList();
+                }
+                if (selecteditemFloor != null && selecteditemStatus != null && EndSquare.Text == "")
+                {
+                    pavilions = pavilions.Where(p => p.floor == selecteditemFloor &&
+                                                      p.pavilionStatusID == selecteditemStatus.pavilionStatusID
+                                                      ).ToList();
+                }
+                if (selecteditemFloor != null && selecteditemStatus == null && EndSquare.Text != "")
+                {
+                    pavilions = pavilions.Where(p => p.floor == selecteditemFloor &&
+
+                                                      p.square < Convert.ToDecimal(EndSquare.Text)).ToList();
+                }
+                if (selecteditemFloor == null && selecteditemStatus != null && EndSquare.Text != "")
+                {
+                    pavilions = pavilions.Where(p =>
+                                                      p.pavilionStatusID == selecteditemStatus.pavilionStatusID &&
+                                                      p.square < Convert.ToDecimal(EndSquare.Text)).ToList();
+                }
+                if (selecteditemFloor != null && selecteditemStatus == null && EndSquare.Text == "")
+                {
+                    pavilions = pavilions.Where(p => p.floor == selecteditemFloor
+                                                      ).ToList();
+                }
+                if (selecteditemFloor == null && selecteditemStatus == null && EndSquare.Text != "")
+                {
+                    pavilions = pavilions.Where(p =>
+                                                      p.square < Convert.ToDecimal(EndSquare.Text)).ToList();
+                }
+                if (selecteditemFloor == null && selecteditemStatus != null && EndSquare.Text == "")
+                {
+                    pavilions = pavilions.Where(p =>
+                                                      p.pavilionStatusID == selecteditemStatus.pavilionStatusID).ToList();
+                }
+
+                AllPavillions.ItemsSource = pavilions;
+            }
         }
     }
 }

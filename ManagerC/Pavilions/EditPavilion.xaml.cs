@@ -101,7 +101,7 @@ namespace PavilionsApp.ManagerC.Pavilions
             bool result_i = int.TryParse(EditFloorNumPav.Text, out i);
             if (!result_i)
             {
-                MessageBox.Show("Не верный формат записи этажа");
+                MessageBox.Show("Не верный формат записи этажа");  
                 return;
             }
              

@@ -104,7 +104,7 @@
                  materialDesign:HintAssist.Hint="Площадь от"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  materialDesign:HintAssist.Foreground="{StaticResource CustomLightBlue}"
-                 materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}" />
+                 materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}" TextChanged="StartSquare_TextChanged" />
 
         <TextBox x:Name="EndSquare"
                  MaxLength="50"
