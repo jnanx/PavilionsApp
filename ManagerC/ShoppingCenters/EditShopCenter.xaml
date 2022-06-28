@@ -23,6 +23,10 @@
 
         </Button>
 
+        <Image Source="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\kingit.png"
+               Height="40" 
+               Width="40"
+               Margin="267,4,1086.6,720.4"/>
         <Button x:Name="EditShopCen" Click="EditShopCen_Click" 
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
@@ -105,7 +109,7 @@
                  FontFamily="Arial"
                  FontSize="14"
                  Foreground="{StaticResource CustomLightBlue}"
-                 materialDesign:HintAssist.Hint="Коэфф.доп.стоимости"
+                 materialDesign:HintAssist.Hint="Коэфф.доб.стоимости"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  materialDesign:HintAssist.Foreground="{StaticResource CustomLightBlue}"
                  materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}" />
@@ -188,11 +192,41 @@
                  Width="200"
                  Margin="370,340,0,0"  
                  FontFamily="Arial"
-                Content="Добавить картинку"
+                Content="Изменить картинку"
                 Background="{StaticResource CustomYellow}"
                 BorderBrush="{StaticResource CustomYellow}"
                 Foreground="{StaticResource CustomBlack}"
-                 FontSize="14"/>
+                 FontSize="14" Click="EditShopCenPic_Click"/>
+
+        <Border HorizontalAlignment="Left" 
+               Height="180" 
+                Margin="650,155,0,0" 
+               VerticalAlignment="Top" 
+               Width="260"
+                CornerRadius="12"
+                BorderThickness="14"
+                BorderBrush="{StaticResource CustomLightBlue}"
+                Panel.ZIndex="3">
+            <Image x:Name="SCImage" 
+            HorizontalAlignment="Left" 
+               Height="156" 
+               Margin="-0.4,-0.4,-4.4,-4.4" 
+               VerticalAlignment="Top" 
+               Width="236"
+               Panel.ZIndex="2"
+               Stretch="Fill"/>
+
+        </Border>
+
+
+
+        <TextBlock Text="Изображение отсутствует"
+                   Margin="694,236,515.6,505.4"
+                   Panel.ZIndex="1"
+                   Foreground="{StaticResource CustomLightBlue}"
+                   FontFamily="Arial"
+                   FontSize="14"
+                       />
 
     </Grid>
 </Window>

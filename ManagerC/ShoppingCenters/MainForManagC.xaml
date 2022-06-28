@@ -7,9 +7,6 @@
         xmlns:local="clr-namespace:PavilionsApp"
         mc:Ignorable="d"
         Title="Главная" Height="800" Width="1400" Icon="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\kingit.png" WindowStartupLocation="CenterScreen">
-    <!--<Window.Background>
-        <ImageBrush ImageSource="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\shoppingcenter2.jpg" Stretch="UniformToFill"/>
-    </Window.Background>-->
     <Grid>
         <Button x:Name="Back" Click="Back_Click" 
                 HorizontalAlignment="Left"
@@ -24,6 +21,10 @@
 
         </Button>
 
+        <Image Source="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\kingit.png"
+               Height="40" 
+               Width="40"
+               Margin="305,4,1048.6,720.4"/>
         <Button x:Name="ToAdd" Click="ToAdd_Click" 
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
@@ -156,6 +157,16 @@
                 BorderBrush="Transparent">
             <Image Source="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\updatepic.png" Stretch="Fill"/>
         </Button>
+
+        <TextBlock HorizontalAlignment="Left" 
+                   VerticalAlignment="Top"
+                   Margin="1235,50,0,0" 
+                   FontFamily="Arial"
+                   FontSize="14"
+                   TextWrapping="Wrap"
+                   Foreground="{StaticResource CustomLightBlue}"
+                   Text="Tab - Редактирование 
+                   Enter - Павильоны" Width="149"/>
         
     </Grid>
 </Window>

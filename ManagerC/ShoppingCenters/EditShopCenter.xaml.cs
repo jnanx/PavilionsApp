@@ -1,6 +1,8 @@
-﻿using PavilionsApp.Model;
+﻿using Microsoft.Win32;
+using PavilionsApp.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -19,7 +21,7 @@ namespace PavilionsApp.ManagerC.ShoppingCenters
     public partial class EditShopCenter : Window
     {
         private static readonly Regex onlyNumbers = new Regex("[^0-9]+");
-        private static readonly Regex onlyNumbersAndComma = new Regex("[^0-9]+");
+        private static readonly Regex onlyNumbersAndComma = new Regex("[^0-9,]+");
 
         private shoppingCenter _shoppingCenter;
         public EditShopCenter(shoppingCenter shoppingCenter)
@@ -28,17 +30,25 @@ namespace PavilionsApp.ManagerC.ShoppingCenters
             InitializeComponent();
             var db = new PAVILIONSEntities();
 
-            EditSCStatus.ItemsSource = db.shoppingCentersStatuses.ToList(); 
+            var StatusesSC = db.shoppingCentersStatuses.ToList();
+            EditSCStatus.ItemsSource = StatusesSC; 
+
             EditShopCenName.Text = _shoppingCenter.shoppingCenterName;
-            EditSCStatus.SelectedItem = _shoppingCenter.shoppingCentersStatuses;
+            EditSCStatus.SelectedItem = StatusesSC.Where(sc => sc.shoppingCenterStatusID == _shoppingCenter.shoppingCenterStatusID).FirstOrDefault();
             EditCoeffAddCost.Text = _shoppingCenter.coefficientOfAddedCost.ToString();
             EditCost.Text = _shoppingCenter.cost.ToString();
             EditCity.Text = _shoppingCenter.city;
             EditFloors.Text = _shoppingCenter.numberOfFloors.ToString();
             EditNumOfPavs.Text = _shoppingCenter.numberOfPavilions.ToString();
+            if(shoppingCenter.picShoppingCenter != null)
+            {
+                SCImage.Source = ImageConvert.BytesToImage(_shoppingCenter.picShoppingCenter);
+            }
+            
 
         }
 
+        
         private void EditCoeffAddCost_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             e.Handled = onlyNumbersAndComma.IsMatch(e.Text);
@@ -61,6 +71,20 @@ namespace PavilionsApp.ManagerC.ShoppingCenters
 
         private void EditShopCen_Click(object sender, RoutedEventArgs e)
         {
+            decimal a, b;
+            bool result_a = decimal.TryParse(EditCoeffAddCost.Text, out a);
+            if (!result_a)
+            {
+                MessageBox.Show("Не верный формат записи коэффициента доб. стоимости");
+                return;
+            }
+
+            bool result_b = decimal.TryParse(EditCost.Text, out b);
+            if (!result_b)
+            {
+                MessageBox.Show("Не верный формат записи стоимости");
+                return;
+            }
             
             var db = new PAVILIONSEntities();
             var sc = db.shoppingCenters.Find(_shoppingCenter.shoppingCenterID);
@@ -70,6 +94,7 @@ namespace PavilionsApp.ManagerC.ShoppingCenters
             sc.cost = Convert.ToDecimal(EditCost.Text);
             sc.city = EditCity.Text;
             sc.numberOfFloors = Convert.ToInt32(EditFloors.Text);
+            sc.picShoppingCenter = _shoppingCenter.picShoppingCenter;
             sc.numberOfPavilions = Convert.ToInt32(EditNumOfPavs.Text);
             db.Entry(sc).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
@@ -80,6 +105,33 @@ namespace PavilionsApp.ManagerC.ShoppingCenters
             MainForManagC mainForManagC = new MainForManagC();
             mainForManagC.Show();
             this.Close();
+        }
+
+        private void EditShopCenPic_Click(object sender, RoutedEventArgs e)
+        {
+            var db = new PAVILIONSEntities();
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Filter = "Изображения |*.jpg;*.png";
+            var result = fileDialog.ShowDialog();
+            if (result == true)
+            {
+                _shoppingCenter.picShoppingCenter = ImageConvert.GetImageBytes(fileDialog.FileName);
+
+            }
+            //var db = new PAVILIONSEntities();
+            //string[] files = Directory.GetFiles(@"C:\Users\Самар\Desktop\Практика 3 курс лето\Image ТЦ", "*.jpg");
+            //foreach (string file in files)
+            //{
+            //    string name = System.IO.Path.GetFileNameWithoutExtension(file);
+            //    shoppingCenter SC = db.shoppingCenters.Where(sc => sc.shoppingCenterName == name).FirstOrDefault();
+            //    if (SC != null)
+            //    {
+            //        SC.picShoppingCenter = ImageConvert.GetImageBytes(file);
+            //    }
+            //    name = null;
+            //    SC = null;
+            //}
+            //db.SaveChanges();
         }
     }
 }

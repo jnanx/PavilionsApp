@@ -23,6 +23,10 @@
 
         </Button>
 
+        <Image Source="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\kingit.png"
+               Height="40" 
+               Width="40"
+               Margin="267,4,1086.6,720.4"/>
         <Button x:Name="AddShopCen" Click="AddShopCen_Click" 
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
@@ -105,7 +109,7 @@
                  FontFamily="Arial"
                  FontSize="14"
                  Foreground="{StaticResource CustomLightBlue}"
-                 materialDesign:HintAssist.Hint="Коэфф.доп.стоимости"
+                 materialDesign:HintAssist.Hint="Коэфф.доб.стоимости"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  materialDesign:HintAssist.Foreground="{StaticResource CustomLightBlue}"
                  materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}" />
@@ -192,7 +196,7 @@
                 Background="{StaticResource CustomYellow}"
                 BorderBrush="{StaticResource CustomYellow}"
                 Foreground="{StaticResource CustomBlack}"
-                 FontSize="14"/>
-
+                 FontSize="14" Click="AddShopCenPic_Click"/>
+       
     </Grid>
 </Window>

@@ -9,7 +9,8 @@
         Title="Павильоны" Height="800" Width="1400" WindowStartupLocation="CenterScreen" Icon="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\kingit.png">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="645*"/>
+            <ColumnDefinition Width="467*"/>
+            <ColumnDefinition Width="178*"/>
             <ColumnDefinition Width="749*"/>
         </Grid.ColumnDefinitions>
         <Button x:Name="Back" Click="Back_Click" 
@@ -56,7 +57,7 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
 
-        <ComboBox x:Name="ChooseSquare"
+        <!--<ComboBox x:Name="ChooseSquare"
                   
                   HorizontalAlignment="Left" 
                   Margin="170,43,0,0" 
@@ -86,12 +87,46 @@
                     </TextBlock>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
-        </ComboBox>
+        </ComboBox>-->
+
+        <TextBox x:Name="StartSquare"
+                 MaxLength="50"
+                 materialDesign:TextFieldAssist.CharacterCounterVisibility="Collapsed"
+                 HorizontalAlignment="Left" 
+                 VerticalAlignment="Top" 
+                 Height="35" 
+                 Width="120"
+                 Margin="170,43,0,0"
+                 TextWrapping="Wrap" 
+                 FontFamily="Arial"
+                 FontSize="12"
+                 Foreground="{StaticResource CustomLightBlue}"
+                 materialDesign:HintAssist.Hint="Площадь от"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 materialDesign:HintAssist.Foreground="{StaticResource CustomLightBlue}"
+                 materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}" />
+
+        <TextBox x:Name="EndSquare"
+                 MaxLength="50"
+                 materialDesign:TextFieldAssist.CharacterCounterVisibility="Collapsed"
+                 HorizontalAlignment="Left" 
+                 VerticalAlignment="Top" 
+                 Height="35" 
+                 Width="120"
+                 Margin="310,43,0,0"
+                 TextWrapping="Wrap" 
+                 FontFamily="Arial"
+                 FontSize="12"
+                 Foreground="{StaticResource CustomLightBlue}"
+                 materialDesign:HintAssist.Hint="Площадь до"
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                 materialDesign:HintAssist.Foreground="{StaticResource CustomLightBlue}"
+                 materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}" TextChanged="EndSquare_TextChanged"/>
 
         <ComboBox x:Name="ChooseStatus"
                   
                   HorizontalAlignment="Left" 
-                  Margin="300,43,0,0" 
+                  Margin="450,43,0,0" 
                   VerticalAlignment="Top" 
                   Width="120"
                   FontFamily="Arial"
@@ -101,11 +136,11 @@
                   materialDesign:HintAssist.Hint="Статус"
                   Foreground="{StaticResource CustomLightBlue}"
                   materialDesign:HintAssist.Foreground="{StaticResource CustomLightBlue}"
-                  materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}" SelectionChanged="ChooseStatus_SelectionChanged"
+                  materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}" SelectionChanged="ChooseStatus_SelectionChanged" Grid.ColumnSpan="2"
                   >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding}">
+                    <TextBlock Text="{Binding pavilionStatusName}">
                         <TextBlock.Style>
                             <Style TargetType="TextBlock">
                                 <Style.Triggers>
@@ -122,13 +157,13 @@
         <Button x:Name="ToReset" Click="ToReset_Click" 
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Margin="420,45,0,0"
+                Margin="112.8,45,0,0"
                 FontFamily="Arial"
                 FontSize="14"
                 Height="30"
                 Width="55"
                 Background="Transparent"
-                BorderBrush="Transparent">
+                BorderBrush="Transparent" Grid.Column="1">
             <Image Source="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\updatepic.png" Stretch="Fill"/>
         </Button>
 
@@ -141,7 +176,7 @@
                 Width="120"
                 Background="{StaticResource CustomYellow}"
                 BorderBrush="{StaticResource CustomYellow}"
-                Foreground="{StaticResource CustomBlack}" Grid.Column="1" />
+                Foreground="{StaticResource CustomBlack}" Grid.Column="2" />
 
         <Button x:Name="SaveDeletedPavs" Click="SaveDeletedPavs_Click" 
                 HorizontalAlignment="Right"
@@ -152,7 +187,7 @@
                 Width="120"
                 Background="{StaticResource CustomLightBlue}"
                 BorderBrush="{StaticResource CustomLightBlue}"
-                Foreground="{StaticResource CustomYellow}" Grid.Column="1" />
+                Foreground="{StaticResource CustomYellow}" Grid.Column="2" />
 
         <DataGrid x:Name="AllPavillions"
                   Background="	#f0f0f0"
@@ -162,7 +197,7 @@
                   AutoGenerateColumns="False" 
                   VerticalAlignment="Bottom"
                   Foreground="{StaticResource CustomBlack}"
-                  PreviewKeyDown="AllPavillions_PreviewKeyDown" Grid.ColumnSpan="2" Margin="0,0,-0.4,0.4">
+                  PreviewKeyDown="AllPavillions_PreviewKeyDown" Grid.ColumnSpan="3" Margin="0,0,-0.4,0.4">
             <DataGrid.Columns>
                 <DataGridTextColumn  Header="Статус ТЦ" Binding="{Binding Path=shoppingCenters.shoppingCentersStatuses.shoppingCenterStatusName}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Название ТЦ" Binding="{Binding Path=shoppingCenters.shoppingCenterName}" IsReadOnly="True"/>
@@ -184,5 +219,17 @@
                    Foreground="{StaticResource CustomBlack}"
                    Text="Список павильонов"
                    FontWeight="Bold"/>
+
+        <TextBlock HorizontalAlignment="Left" 
+                   VerticalAlignment="Top"
+                   Margin="590.2,50,0,0" 
+                   FontFamily="Arial"
+                   FontSize="14"
+                   TextWrapping="Wrap"
+                   Foreground="{StaticResource CustomLightBlue}"
+                   Text="Tab - редактирование"
+                   Grid.Column="2"/>
+        <Image Source="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\kingit.png"
+               Height="40" Margin="218,7,195.2,723.4"/>
     </Grid>
 </Window>

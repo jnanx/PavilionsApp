@@ -21,6 +21,7 @@ namespace PavilionsApp.ManagerC
     {
         private static readonly Regex onlyNumbers = new Regex("[^0-9]+");
         private static readonly Regex onlyNumbersAndComma = new Regex("[^0-9,]+");
+        private static readonly Regex onlyNumbersAndMinus = new Regex("[^0-9-]+");
         private int _shoppingCenterID;
         public AddPavillion(int shoppingCenterID)
         {
@@ -76,8 +77,38 @@ namespace PavilionsApp.ManagerC
                 return;
             }
 
+            decimal a, b, c;
+            bool result_a = decimal.TryParse(AddSquare.Text, out a);
+            if (!result_a)
+            {
+                MessageBox.Show("Не верный формат записи площади");
+                return;
+            }
+
+            bool result_b = decimal.TryParse(AddCoeffAddCostPav.Text, out b);
+            if (!result_b)
+            {
+                MessageBox.Show("Не верный формат записи коэффициента доб. стоимости");
+                return;
+            }
+
+            bool result_c = decimal.TryParse(AddCostPerMeter.Text, out c);
+            if (!result_c)
+            {
+                MessageBox.Show("Не верный формат записи цены за кв. м.");
+                return;
+            }
+
+            int i;
+            bool result_i = int.TryParse(AddFloorNumPav.Text, out i);
+            if (!result_i)
+            {
+                MessageBox.Show("Не верный формат записи этажа");
+                return;
+            }
+
             var db = new PAVILIONSEntities();
-            var b = new pavilion
+            var p = new pavilion
             {
                 shoppingCenterID = _shoppingCenterID,
                 pavilionNumber = AddPavNum.Text,
@@ -88,13 +119,13 @@ namespace PavilionsApp.ManagerC
                 costForMetere = Convert.ToDecimal(AddCostPerMeter.Text)               
             };
             db.pavilions
-                .Add(b);
+                .Add(p);
             db.SaveChanges();
         }
 
         private void AddFloorNumPav_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = onlyNumbers.IsMatch(e.Text);
+            e.Handled = onlyNumbersAndMinus.IsMatch(e.Text);
         }
 
         private void AddSquare_PreviewTextInput(object sender, TextCompositionEventArgs e)

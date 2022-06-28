@@ -119,6 +119,7 @@
     <Compile Include="Admin\MainAdmin.xaml.cs">
       <DependentUpon>MainAdmin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ImageConvert.cs" />
     <Compile Include="ManagerC\Pavilions\AddPavillion.xaml.cs">
       <DependentUpon>AddPavillion.xaml</DependentUpon>
     </Compile>

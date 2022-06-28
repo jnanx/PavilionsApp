@@ -22,11 +22,14 @@
             </Rectangle.Effect>
         </Rectangle>
             <Image Source="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\shoppng.png"
-               Panel.ZIndex="2"
                Height="300"
                VerticalAlignment="Center"
                HorizontalAlignment="Left"
-               Margin="220,0,0,0"/>
+               Margin="220,0,0,0"
+                   Panel.ZIndex="2"/>
+        <Image Source="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\kingit.png"
+               Height="150" Margin="-132,207,131.6,413.4"
+               Panel.ZIndex="3"/>
         <TextBlock Text="Логин"
                Foreground="{StaticResource CustomBlack}"
                FontSize="14"

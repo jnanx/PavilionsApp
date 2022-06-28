@@ -13,6 +13,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
+using Microsoft.Win32;
 
 namespace PavilionsApp
 {
@@ -21,10 +23,14 @@ namespace PavilionsApp
     {
         private static readonly Regex onlyNumbers = new Regex("[^0-9]+");
         private static readonly Regex onlyNumbersAndComma = new Regex("[^0-9,]+");
+
+        shoppingCenter _shoppingCenter;
+        PAVILIONSEntities db;
         public AddShopCenter()
         {
             InitializeComponent();
-            var db = new PAVILIONSEntities();
+            db = new PAVILIONSEntities();
+            _shoppingCenter = new shoppingCenter();
             AddSCStatus.ItemsSource = db.shoppingCentersStatuses.Where(a => a.shoppingCenterStatusID != 4).ToList();
         }
 
@@ -79,19 +85,36 @@ namespace PavilionsApp
                 return;
             }
 
-            var db = new PAVILIONSEntities();
-            var a = new shoppingCenter
+            decimal a, b;
+            
+            bool result_a = decimal.TryParse(AddCoeffAddCost.Text, out a);
+            if (!result_a)
             {
-                shoppingCenterName = AddShopCenName.Text,
-                shoppingCenterStatusID = (AddSCStatus.SelectedItem as shoppingCentersStatus).shoppingCenterStatusID,
-                numberOfPavilions = Convert.ToInt32(AddNumOfPavs.Text),
-                city = AddCity.Text,
-                cost = Convert.ToDecimal(AddCost.Text),
-                coefficientOfAddedCost = Convert.ToDecimal(AddCoeffAddCost.Text),
-                numberOfFloors = Convert.ToInt32(AddFloors.Text)
-            };
+                MessageBox.Show("Не верный формат записи коэффициента доб. стоимости");
+                return;
+            }
+
+            bool result_b = decimal.TryParse(AddCost.Text, out b);
+            if (!result_b)
+            {
+                MessageBox.Show("Не верный формат записи затрат");
+                return;
+            }
+
+
+            var db = new PAVILIONSEntities();
+
+
+            _shoppingCenter.shoppingCenterName = AddShopCenName.Text;
+            _shoppingCenter.shoppingCenterStatusID = (AddSCStatus.SelectedItem as shoppingCentersStatus).shoppingCenterStatusID;
+            _shoppingCenter.numberOfPavilions = Convert.ToInt32(AddNumOfPavs.Text);
+            _shoppingCenter.city = AddCity.Text;
+            _shoppingCenter.cost = Convert.ToDecimal(AddCost.Text);
+            _shoppingCenter.coefficientOfAddedCost = Convert.ToDecimal(AddCoeffAddCost.Text);
+            _shoppingCenter.numberOfFloors = Convert.ToInt32(AddFloors.Text);
+            
             db.shoppingCenters
-                .Add(a);
+                .Add(_shoppingCenter);
             db.SaveChanges();
         }
 
@@ -115,5 +138,18 @@ namespace PavilionsApp
             e.Handled = onlyNumbersAndComma.IsMatch(e.Text);
         }
 
+        private void AddShopCenPic_Click(object sender, RoutedEventArgs e)
+        {
+            var db = new PAVILIONSEntities();
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Filter = "Изображения |*.jpg;*.png";
+            var result = fileDialog.ShowDialog();
+            if (result == true)
+            {
+                _shoppingCenter.picShoppingCenter = ImageConvert.GetImageBytes(fileDialog.FileName);
+
+            }
+
+        }
     }
 }

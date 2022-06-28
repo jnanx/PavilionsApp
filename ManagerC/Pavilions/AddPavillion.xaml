@@ -137,7 +137,7 @@
         FontFamily="Arial"
         FontSize="14"
         Foreground="{StaticResource CustomLightBlue}"
-        materialDesign:HintAssist.Hint="Коэфф.доп.стоимости"
+        materialDesign:HintAssist.Hint="Коэфф.доб.стоимости"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
         materialDesign:HintAssist.Foreground="{StaticResource CustomLightBlue}"
         materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}" />
@@ -160,5 +160,10 @@
         materialDesign:HintAssist.Foreground="{StaticResource CustomLightBlue}"
         materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource CustomYellow}" />
 
+        <Image Source="C:\Users\Самар\Desktop\Практика 3 курс лето\PavilionsApp\Images\kingit.png"
+               Height="40" 
+               VerticalAlignment="Top"
+               HorizontalAlignment="Left"
+               Margin="240,4,0,0"/>
     </Grid>
 </Window>
